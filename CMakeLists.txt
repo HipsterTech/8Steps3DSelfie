@@ -10,7 +10,11 @@ find_package(PCL 1.2 REQUIRED)
 
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
-add_definitions(${PCL_DEFINITIONS})
+if(APPLE)
+	add_executable (8Steps3DSelfie MACOSX_BUNDLE 8Steps3DSelfie)
+else()
+	
+	add_executable (8Steps3DSelfie 8Steps3DSelfie.cpp)
+endif()
 
-add_executable (8Steps3DSelfie 8Steps3DSelfie.cpp)
 target_link_libraries (8Steps3DSelfie ${PCL_LIBRARIES})
