@@ -21,7 +21,7 @@ static std::mutex _mtx;
 static bool saveCloud(false);
 static unsigned int filesSaved = 0;
 static Eigen::Matrix4f transform [8];
-static double d = 0.9;
+static double d = 1.2;
 static double v = sqrt(2)/2;
 
 // 
