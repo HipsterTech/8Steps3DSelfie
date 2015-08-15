@@ -54,18 +54,18 @@ populateTransformationMatrices()
     std::cout << " Created m2= "<<std::endl << m2 << std::endl;
 
     Eigen::Matrix4f m3;
-    m3 << -v,0,v,-d,
+    m3 << -v,0,-v,d,
           0,1,0,0,
-          -v,0,-v,2*d,
+          v,0,-v,2*d,
           0,0,0,1;
     transform[3]=m3;
 
     std::cout << " Created m3= "<<std::endl << m3 << std::endl;
 
     Eigen::Matrix4f m4;
-    m4 << 0,0,-1,0,
+    m4 << -1,0,0,0,
           0,1,0,0,
-          -1,0,0,2*d,
+          0,0,-1,2*d,
           0,0,0,1;
     transform[4]=m4;
 
@@ -90,7 +90,7 @@ populateTransformationMatrices()
     std::cout << " Created m6= "<<std::endl << m6 << std::endl;
 
     Eigen::Matrix4f m7;
-    m7 << v,0,v,d,
+    m7 << v,0,v,-d,
           0,1,0,0,
           -v,0,v,0,
           0,0,0,1;
@@ -102,12 +102,7 @@ populateTransformationMatrices()
 
 }
 
-void 
-transformCloud(pcl::PointCloud<pcl::PointXYZRGBA>::Ptr &cloud_src, pcl::PointCloud<pcl::PointXYZRGBA>::Ptr &cloud_output)
-{
-    
-     
-}
+
 
 //Called every time there's a new frame 
 void
