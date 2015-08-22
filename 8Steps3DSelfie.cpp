@@ -129,16 +129,21 @@ grabber_callback(const pcl::PointCloud<pcl::PointXYZRGBA>::ConstPtr& cloud)
             Eigen::Matrix4f m=transform[filesSaved];
             pcl::transformPointCloud (*cloud, *transformed_cloud, m);
             std::stringstream stream;
+            std::stringstream originalStream;
             //mac
             stream << "inputCloud" << filesSaved << ".pcd";
+            originalStream << "original_inputCloud" << filesSaved << ".pcd";
             //linux
             //stream << "inputCloud" << filesSaved << ".pcd";
             std::string filename = stream.str();
+            std::string originalFilename = originalStream.str();
             if (pcl::io::savePCDFile(filename, *transformed_cloud, true) == 0)
             {
                 filesSaved++;
                 cout << "Saved " << filename << "." << endl;
+                pcl::io::savePCDFile(originalFilename, *cloud, true);
             }
+
             else PCL_ERROR("Problem saving %s.\n", filename.c_str());     
             saveCloud = false;
         }
